@@ -1,16 +1,18 @@
 package com.example.DTO;
 
-public class Account {
-    private String accountName;
+import com.example.entity.Account;
+
+public class AccountDTO {
+    private String userName;
     private String password;
     private String email;
 
-    public String getAccountName() {
-        return accountName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -27,5 +29,9 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Account toEntity(){
+        return new Account(userName, password, email);
     }
 }

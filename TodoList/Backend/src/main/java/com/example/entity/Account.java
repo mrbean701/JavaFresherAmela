@@ -25,6 +25,9 @@ public class Account {
         this.userName = userName;
     }
 
+    public Account(String userName, String password, String email) {
+    }
+
     public int getId() {
         return id;
     }
