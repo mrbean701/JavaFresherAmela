@@ -1,45 +1,38 @@
 package com.example.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.EnumSet;
 
 @Entity
 @Table(name = "Task")
-public class Task {
+public class Task implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Column(name = "TaskID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TaskID", nullable = false)
     private int id;
 
-    @Column(name = "Title", nullable = false)
+    @Column(name = "Title", length = 100, nullable = false, unique = false)
     private String title;
 
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "`Status`", nullable = false)
-    private Status status = Status.Open;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
-    @Column(name = "Content", nullable = false)
+    @Column(name = "Content", length = 1000, nullable = false, unique = false)
     private String content;
-
-    @Column(name = "Creator", nullable = false)
-    private int creator;
 
     public Task() {
     }
 
-    public Task(int id, String title, Status status, String content, int creator) {
-        this.id = id;
-        this.title = title;
-        this.status = status;
-        this.content = content;
-        this.creator = creator;
-    }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(short id) {
         this.id = id;
     }
 
@@ -67,11 +60,8 @@ public class Task {
         this.content = content;
     }
 
-    public int getCreator() {
-        return creator;
-    }
-
-    public void setCreator(int creator) {
-        this.creator = creator;
+    @Override
+    public String toString() {
+        return "Task [id=" + id + ", title=" + title + ", status=" + status + ", content=" + content + "]";
     }
 }
