@@ -2,17 +2,16 @@ package com.example.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.EnumSet;
 
 @Entity
-@Table(name = "Task")
+@Table(name = "`Task`")
 public class Task implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Column(name = "TaskID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private short id;
 
     @Column(name = "Title", length = 100, nullable = false, unique = false)
     private String title;
@@ -27,8 +26,11 @@ public class Task implements Serializable {
     public Task() {
     }
 
+    public Task(short id, String title, String content, Status status) {
+    }
 
-    public Integer getId() {
+
+    public short getId() {
         return id;
     }
 
