@@ -1,16 +1,12 @@
 package com.example.entity;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "`User`")
-public class User implements Serializable, UserDetails {
+public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -28,83 +24,6 @@ public class User implements Serializable, UserDetails {
     private String password;
 
     public User() {
-    }
-
-    public User(String userName) {
-    }
-
-    public User(short id, String fullName, String password) {
-    }
-
-    public User(String userName, String password, List<GrantedAuthority> user) {
-    }
-
-
-    public short getId() {
-        return id;
-    }
-
-    public void setId(short id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", fullName=" + fullName + ", userName=" + userName + ", password=" + password + "]";
     }
 
 }

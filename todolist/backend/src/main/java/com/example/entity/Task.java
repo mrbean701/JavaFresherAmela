@@ -62,8 +62,4 @@ public class Task implements Serializable {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "Task [id=" + id + ", title=" + title + ", status=" + status + ", content=" + content + "]";
-    }
 }
