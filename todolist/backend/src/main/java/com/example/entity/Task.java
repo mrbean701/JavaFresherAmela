@@ -23,12 +23,23 @@ public class Task implements Serializable {
     @Column(name = "Content", length = 1000, nullable = false, unique = false)
     private String content;
 
+    @ManyToOne
+    @JoinColumn(name = "creator",nullable = false)
+    private User user;
+
     public Task() {
     }
 
-    public Task(short id, String title, String content, Status status) {
+    public Task(short id, String title, Status status, String content, User user) {
+        this.id = id;
+        this.title = title;
+        this.status = status;
+        this.content = content;
+        this.user = user;
     }
 
+    public Task(String title) {
+    }
 
     public short getId() {
         return id;
@@ -62,4 +73,11 @@ public class Task implements Serializable {
         this.content = content;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

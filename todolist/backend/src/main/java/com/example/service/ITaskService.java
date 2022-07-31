@@ -3,6 +3,7 @@ package com.example.service;
 
 import com.example.entity.Status;
 import com.example.entity.Task;
+import com.example.form.TaskFormForCreating;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface ITaskService  {
 
     public Task getTaskByStatus(Status status);
 
-    public void createTask(Task task);
+    public void createTask(TaskFormForCreating form);
 
     public void updateTask(Task task);
 
@@ -23,4 +24,6 @@ public interface ITaskService  {
     public boolean isTaskExistsByID(short id);
 
     public boolean isTaskExistsByTitle(String title);
+
+    public Task getTaskByTitle(String title);
 }
