@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+    <!-- Import Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{/createTasks}">Todo List</a>
+                </div>
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="Register.html"><span class="glyphicon glyphicon-user"></span>Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="LoginPage.html"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <form class="form-inline">
+                    <button class="btn btn-secondary" type="button">Export CSV</button>
+                    <button class="btn btn-primary" type="button" onclick="clickCreateNewTask()">Tạo mới</button>
+                </form>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-7">
+                <div class="col-sm-6 form-group">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Từ khóa" aria-label="Search">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                    </form>
+                </div>
+                <div class="col-sm-1 dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Status
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Open</a></li>
+                        <li><a href="#">Inprogress</a></li>
+                        <li><a href="#">Done</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <table class="table table-border" id="Detail_Staff_ID">
+            <thead>
+                <tr>
+                    <th class="title">Tiêu đề</th>
+                    <th class="status">Trạng thái</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr th:each="task, rowStat : ${tasks}">
+                    <td th:text="${task.title}"></td>
+                    <td th:text="${task.status}"></td>
+                    <td>
+                        <a class="detail" title="Detail" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+<!--<script type="text/javascript" src="../JS/Program.js"></script>-->
+
+</html>
